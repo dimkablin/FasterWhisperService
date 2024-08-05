@@ -139,9 +139,3 @@ FasterWhisperService/
 
 - [FastAPI](https://fastapi.tiangolo.com/)
 - [Faster Whisper](https://github.com/openai/whisper)
-
-
-### Примечания:
-- Замените `https://github.com/yourusername/FasterWhisperService.git` на фактический URL вашего репозитория.
-- Убедитесь, что содержимое файла `.env` соответствует необходимым переменным окружения для вашего проекта.
-- Убедитесь, что предоставляете соответствующую лицензию в файле `LICENSE`, если включаете этот раздел в `README.md`.
