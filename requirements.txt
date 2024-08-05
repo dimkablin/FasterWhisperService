@@ -1,9 +1,5 @@
-streamlit
-pandas
-requests
-json
-requests
-xlsxwriter
-urllib
-uuid
-pathlib
+fastapi
+uvicorn
+faster-whisper
+python-dotenv
+python-multipart

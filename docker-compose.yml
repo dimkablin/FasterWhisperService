@@ -1,20 +1,10 @@
 version: '3.8'
 
 services:
-  back:
-    build: src
-    ports:
-      - 8000:8000
-  front:
+  whisper:
     build: .
     ports:
-      - 7861:7861
-    depends_on:
-      - back
-  whisper:
-    build: src/models/whisper
-    ports:
-      - 8001:8001
+      - 8000:8000
     deploy:
       resources:
         reservations:
@@ -23,23 +13,3 @@ services:
               count: 1
               capabilities: [gpu]
 
-# version: '3.8'
-
-# services:
-#   fastapi:
-#     build: src
-#     ports:
-#       - 8000:8000
-#     deploy:
-#       resources:
-#         reservations:
-#           devices:
-#             - driver: nvidia
-#               count: 1
-#               capabilities: [gpu]
-#   front:
-#     build: .
-#     ports:
-#       - 7861:7861
-#     depends_on:
-#       - fastapi

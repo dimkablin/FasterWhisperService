@@ -1,35 +1,15 @@
-FROM python:3.11-slim
+FROM nvidia/cuda:12.2.0-devel-ubuntu22.04
+
 WORKDIR /app
 
 COPY requirements.txt .
 
-# Установите ffmpeg
-RUN apt-get update && apt-get install -y ffmpeg && \
-    pip install --no-cache-dir -r requirements.txt
+RUN apt-get update -y && apt-get install -y python3 python3-pip libcudnn8 libcudnn8-dev -y && \
+ln -s /usr/bin/python3 /usr/bin/python && \    
+pip install --no-cache-dir -r requirements.txt 
 
-COPY src/env.py src/env.py
-COPY src/streamlit_app.py src/streamlit_app.py
-COPY src/utils.py src/utils.py
+COPY . .
 
-EXPOSE 7861
+EXPOSE 8000
 
-CMD [ "streamlit", "run", "src/streamlit_app.py" ]
-
-
-# FROM python:3.11-slim
-# WORKDIR /app
-
-# COPY requirements.txt .
-
-# # Установите ffmpeg
-# RUN apt-get update && apt-get install -y ffmpeg && \
-#     pip install --no-cache-dir -r requirements.txt
-
-# COPY src/env.py src/env.py
-# COPY src/gradio_app.py src/gradio_app.py
-# COPY src/main.py src/main.py
-# COPY src/utils.py src/utils.py
-
-# EXPOSE 7861
-
-# CMD [ "python", "src/main.py" ]
+CMD ["python", "-m", "whisper"]
